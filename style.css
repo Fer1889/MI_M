@@ -82,9 +82,7 @@ body {
 .sparkle:nth-child(3) { top: 70%; left: 90%; animation-delay: 8s; }
 .sparkle:nth-child(4) { top: 85%; left: 20%; animation-delay: 8.6s; }
 
-/* ─── Las 4 fotos (marcadores de ejemplo) ─── */
-/* Para poner tus fotos reales: dentro de cada .photo agrega
-   <img src="tu-foto-1.jpg"> y quita el ícono de cámara del HTML. */
+
 .photo {
   position: absolute;
   width: clamp(64px, 19vw, 82px);
