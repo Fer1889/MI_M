@@ -50,8 +50,8 @@ body {
   opacity: 0.8;
   animation:
     drawLine 3s cubic-bezier(0.65, 0, 0.35, 1) forwards,
-    fillColor 1.8s ease-in-out 6.3s forwards,
-    pulseGlow 2.4s ease-in-out 8.3s infinite;
+    fillColor 1.2s ease-in-out 3.1s forwards,
+    pulseGlow 2.4s ease-in-out 4.5s infinite;
 }
 
 .heart-path {
@@ -62,9 +62,9 @@ body {
   stroke-dashoffset: 75;
   filter: drop-shadow(0 0 8px rgba(255, 71, 87, 0.6));
   animation:
-    drawLine 6s cubic-bezier(0.65, 0, 0.35, 1) forwards,
-    fillColor 1.8s ease-in-out 6.3s forwards,
-    heartbeat 2.4s ease-in-out 8.3s infinite;
+    drawLine 3s cubic-bezier(0.65, 0, 0.35, 1) forwards,
+    fillColor 1.2s ease-in-out 3.1s forwards,
+    heartbeat 2.4s ease-in-out 4.5s infinite;
 }
 
 .sparkle {
@@ -77,12 +77,12 @@ body {
   box-shadow: 0 0 6px 1px rgba(255, 217, 222, 0.9);
   animation: sparkle 2.6s ease-in-out infinite;
 }
-.sparkle:nth-child(1) { top: 5%;  left: 15%; animation-delay: 7s; }
-.sparkle:nth-child(2) { top: 20%; left: 85%; animation-delay: 7.5s; }
-.sparkle:nth-child(3) { top: 70%; left: 90%; animation-delay: 8s; }
-.sparkle:nth-child(4) { top: 85%; left: 20%; animation-delay: 8.6s; }
+.sparkle:nth-child(1) { top: 5%;  left: 15%; animation-delay: 4.6s; }
+.sparkle:nth-child(2) { top: 20%; left: 85%; animation-delay: 5.0s; }
+.sparkle:nth-child(3) { top: 70%; left: 90%; animation-delay: 5.4s; }
+.sparkle:nth-child(4) { top: 85%; left: 20%; animation-delay: 5.8s; }
 
-
+/* ─── Las 4 fotos ─── */
 .photo {
   position: absolute;
   width: clamp(64px, 19vw, 82px);
@@ -104,10 +104,10 @@ body {
   display: block;
 }
 
-.photo-1 { top: -6%;  left: -10%; animation-delay: 9s;   --tilt: -7deg; }
-.photo-2 { top: -6%;  right: -10%; animation-delay: 9.35s; --tilt: 6deg; }
-.photo-3 { bottom: -6%; left: -10%; animation-delay: 9.7s;  --tilt: 5deg; }
-.photo-4 { bottom: -6%; right: -10%; animation-delay: 10.05s; --tilt: -5deg; }
+.photo-1 { top: -6%;  left: -10%; animation-delay: 6.0s; --tilt: -7deg; }
+.photo-2 { top: -6%;  right: -10%; animation-delay: 6.3s; --tilt: 6deg; }
+.photo-3 { bottom: -6%; left: -10%; animation-delay: 6.6s; --tilt: 5deg; }
+.photo-4 { bottom: -6%; right: -10%; animation-delay: 6.9s; --tilt: -5deg; }
 
 /* ─── Texto ─── */
 .message {
@@ -116,8 +116,8 @@ body {
   opacity: 0;
   transform: translateY(20px);
   animation:
-    showText 1.4s ease-out 10.8s forwards,
-    glowText 2.8s ease-in-out 12.3s infinite;
+    showText 1.2s ease-out 8s forwards,
+    glowText 2.8s ease-in-out 9.4s infinite;
 }
 
 .message span {
