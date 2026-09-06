@@ -1,0 +1,184 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+}
+
+body {
+  height: 100dvh;
+  background: radial-gradient(circle at 50% 40%, #1a1a1a 0%, #0a0a0a 70%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Playfair Display', serif;
+  overflow: hidden;
+  padding: 16px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 340px;
+}
+
+/* ─── Escenario: corazón + fotos alrededor ─── */
+.stage {
+  position: relative;
+  width: clamp(170px, 52vw, 210px);
+  height: clamp(170px, 52vw, 210px);
+  margin-bottom: clamp(28px, 8vh, 44px);
+}
+
+.heart-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.heart-glow {
+  fill: transparent;
+  stroke: #ff4757;
+  stroke-width: 0.6;
+  stroke-dasharray: 75;
+  stroke-dashoffset: 75;
+  filter: blur(6px);
+  opacity: 0.8;
+  animation:
+    drawLine 6s cubic-bezier(0.65, 0, 0.35, 1) forwards,
+    fillColor 1.8s ease-in-out 6.3s forwards,
+    pulseGlow 2.4s ease-in-out 8.3s infinite;
+}
+
+.heart-path {
+  fill: transparent;
+  stroke: #ff4757;
+  stroke-width: 0.5;
+  stroke-dasharray: 75;
+  stroke-dashoffset: 75;
+  filter: drop-shadow(0 0 8px rgba(255, 71, 87, 0.6));
+  animation:
+    drawLine 6s cubic-bezier(0.65, 0, 0.35, 1) forwards,
+    fillColor 1.8s ease-in-out 6.3s forwards,
+    heartbeat 2.4s ease-in-out 8.3s infinite;
+}
+
+.sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ffd9de;
+  opacity: 0;
+  box-shadow: 0 0 6px 1px rgba(255, 217, 222, 0.9);
+  animation: sparkle 2.6s ease-in-out infinite;
+}
+.sparkle:nth-child(1) { top: 5%;  left: 15%; animation-delay: 7s; }
+.sparkle:nth-child(2) { top: 20%; left: 85%; animation-delay: 7.5s; }
+.sparkle:nth-child(3) { top: 70%; left: 90%; animation-delay: 8s; }
+.sparkle:nth-child(4) { top: 85%; left: 20%; animation-delay: 8.6s; }
+
+/* ─── Las 4 fotos (marcadores de ejemplo) ─── */
+/* Para poner tus fotos reales: dentro de cada .photo agrega
+   <img src="tu-foto-1.jpg"> y quita el ícono de cámara del HTML. */
+.photo {
+  position: absolute;
+  width: clamp(64px, 19vw, 82px);
+  height: clamp(64px, 19vw, 82px);
+  background: #1e1e1e;
+  border: 3px solid #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5), 0 0 14px rgba(255, 71, 87, 0.35);
+  opacity: 0;
+  transform: scale(0) rotate(0deg);
+  animation: popIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-1 { top: -6%;  left: -10%; animation-delay: 9s;   --tilt: -7deg; }
+.photo-2 { top: -6%;  right: -10%; animation-delay: 9.35s; --tilt: 6deg; }
+.photo-3 { bottom: -6%; left: -10%; animation-delay: 9.7s;  --tilt: 5deg; }
+.photo-4 { bottom: -6%; right: -10%; animation-delay: 10.05s; --tilt: -5deg; }
+
+/* ─── Texto ─── */
+.message {
+  color: #fff;
+  font-size: clamp(1.05rem, 5vw, 1.4rem);
+  opacity: 0;
+  transform: translateY(20px);
+  animation:
+    showText 1.4s ease-out 10.8s forwards,
+    glowText 2.8s ease-in-out 12.3s infinite;
+}
+
+.message span {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 0.62em;
+  color: #ff99a8;
+}
+
+/* ─── Keyframes ─── */
+@keyframes drawLine { to { stroke-dashoffset: 0; } }
+
+@keyframes fillColor { to { fill: #ff4757; stroke: transparent; } }
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.6; filter: blur(6px); }
+  50% { opacity: 1; filter: blur(10px); }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0) translateY(0); }
+  50% { opacity: 1; transform: scale(1) translateY(-10px); }
+}
+
+@keyframes popIn {
+  0%   { opacity: 0; transform: scale(0) rotate(0deg); }
+  100% { opacity: 1; transform: scale(1) rotate(var(--tilt)); }
+}
+
+@keyframes showText {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glowText {
+  0%, 100% {
+    text-shadow:
+      0 0 6px rgba(255, 71, 87, 0.4),
+      0 0 12px rgba(255, 71, 87, 0.2);
+  }
+  50% {
+    text-shadow:
+      0 0 14px rgba(255, 71, 87, 0.9),
+      0 0 28px rgba(255, 71, 87, 0.6),
+      0 0 42px rgba(255, 153, 168, 0.4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heart-path, .heart-glow, .message, .sparkle, .photo {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    fill: #ff4757 !important;
+    stroke: transparent !important;
+    stroke-dashoffset: 0 !important;
+  }
+}
